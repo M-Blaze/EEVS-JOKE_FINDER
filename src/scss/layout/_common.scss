@@ -1,0 +1,36 @@
+.category-block {
+  .block-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+}
+
+.categories-list {
+  @extend %list-reset;
+  @extend %d-flex;
+  font-size: 2rem;
+  margin: 0 -10px;
+
+  .card {
+    width: 25%;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+
+    &-content {
+      @extend %d-flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: aqua;
+    }
+
+    &:after {
+      content: "";
+      width: 100%;
+      display: block;
+      padding-bottom: 50%;
+    }
+  }
+}

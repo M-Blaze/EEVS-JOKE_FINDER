@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import Header from "../../views/header";
+import Categories from "../../views/categories";
 
 class MainLayout extends Component {
   render() {
-    return <h1>Main Layout</h1>;
+    return (
+      <div className="container">
+        <Header />
+        <Categories />
+      </div>
+    );
   }
 }
 export default MainLayout;

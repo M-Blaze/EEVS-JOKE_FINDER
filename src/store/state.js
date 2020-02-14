@@ -1,3 +1,5 @@
-const STATE = {};
+const STATE = {
+  categories: []
+};
 
 export default STATE;

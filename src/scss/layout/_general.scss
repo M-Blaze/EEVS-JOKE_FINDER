@@ -6,7 +6,7 @@
 
 * {
   box-sizing: border-box;
-  margin-top: 0;
+  margin-top: 0 !important;
 
   &:after,
   &:before {
@@ -16,4 +16,38 @@
 
 html {
   font-size: $base-font-size;
+}
+
+body {
+  font-family: $base-font-family;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: $h1-font-size;
+}
+
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
+}
+
+h6 {
+  font-size: $h6-font-size;
 }
