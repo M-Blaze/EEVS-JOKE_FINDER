@@ -1,0 +1,19 @@
+#wrapper {
+  min-width: 320px;
+  position: relative;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin-top: 0;
+
+  &:after,
+  &:before {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  font-size: $base-font-size;
+}
