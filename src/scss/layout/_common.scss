@@ -114,3 +114,15 @@
     }
   }
 }
+
+.category-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  @extend %d-flex;
+  justify-content: center;
+  align-items: center;
+  background: $base-background-color;
+}

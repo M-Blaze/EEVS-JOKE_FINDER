@@ -1,14 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../store/action";
+import Loader from "react-loader-spinner";
 
 function Categories({ getCategories, categories }) {
+  const [isFetchingCategories, setIsFetchingCategories] = useState(true);
   useEffect(() => {
     getCategories();
     document.body.addEventListener("click", cardPopup);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (categories.length !== 0) {
+      setIsFetchingCategories(false);
+    }
+  }, [categories]);
 
   function toggleActiveCard(e) {
     const target = e.target;
@@ -35,7 +43,15 @@ function Categories({ getCategories, categories }) {
     }
   }
 
-  return (
+  return isFetchingCategories ? (
+    <Loader
+      type="MutatingDots"
+      className="category-loader"
+      color="#ffa500"
+      height={100}
+      width={100}
+    />
+  ) : (
     <div className="category-block">
       <div className="block-header">
         <h2>Pick your Poison!!!</h2>
