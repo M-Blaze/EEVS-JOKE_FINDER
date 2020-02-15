@@ -9,13 +9,53 @@
   @extend %list-reset;
   @extend %d-flex;
   font-size: 2rem;
-  margin: 0 -10px;
+  margin: 0 -20px;
 
   .card {
     width: 25%;
     text-align: center;
-    margin-bottom: 20px;
-    padding: 0 10px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    position: relative;
+    transition: transform 0.1s ease-in;
+
+    &.card-active {
+      transform: scale(1.08);
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 16px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 35px 0 0 35px;
+      border-color: transparent transparent transparent $base-background-color;
+      z-index: 10;
+      transition: all 0.1s linear;
+    }
+
+    &:nth-child(2n) {
+      .card-content {
+        background: $pink-light;
+
+        &:before {
+          border-color: transparent $blue-light transparent transparent;
+        }
+      }
+    }
+
+    &:nth-child(3n) {
+      .card-content {
+        background: $blue-light;
+
+        &:before {
+          border-color: transparent $pink-light transparent transparent;
+        }
+      }
+    }
 
     &-content {
       @extend %d-flex;
@@ -23,7 +63,42 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      background: aqua;
+      background: $yellow-light;
+      position: relative;
+      text-transform: capitalize;
+      box-shadow: 6px -6px 7px 0px rgba(161, 161, 161, 0.4);
+      transition: transform 0.1s linear;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        height: 38px;
+        width: 38px;
+        transform: rotateZ(45deg);
+        z-index: 12;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -1px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 28px 28px 0;
+        border-color: transparent rgba($orange-light, 0.6) transparent
+          transparent;
+        box-shadow: 4px -4px 5px 0 rgba(rgb(161, 161, 161), 0.4);
+        pointer-events: none;
+        z-index: 1;
+      }
     }
 
     &:after {
