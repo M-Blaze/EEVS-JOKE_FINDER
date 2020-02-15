@@ -1,5 +1,6 @@
 const STATE = {
-  categories: []
+  categories: [],
+  jokes: []
 };
 
 export default STATE;

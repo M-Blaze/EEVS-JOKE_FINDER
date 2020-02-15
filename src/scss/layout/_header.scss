@@ -16,7 +16,7 @@
   font-size: 1.5rem;
 
   input {
-    padding: 10px 20px;
+    padding: 10px 50px 10px 20px;
     border-radius: 20px;
     border: 0;
     outline: none;
@@ -32,4 +32,21 @@
 
 .logo {
   max-width: 120px;
+}
+
+.search-form {
+  position: relative;
+
+  .button-group {
+    position: absolute;
+    top: calc(50% + 1px);
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    line-height: 1;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

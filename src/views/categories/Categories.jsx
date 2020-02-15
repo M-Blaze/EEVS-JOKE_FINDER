@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { getCategories } from "../../store/action";
 
 function Categories({ getCategories, categories }) {
@@ -43,14 +44,16 @@ function Categories({ getCategories, categories }) {
         {categories.map(category => {
           return (
             <li className="card" key={category}>
-              <div
-                className="card-content"
-                onMouseOver={toggleActiveCard}
-                onMouseOut={toggleActiveCard}
-                style={{ backgroundImage: `url()` }}
-              >
-                {category}
-              </div>
+              <Link to={`/categories/${category}`}>
+                <div
+                  className="card-content"
+                  onMouseOver={toggleActiveCard}
+                  onMouseOut={toggleActiveCard}
+                  style={{ backgroundImage: `url()` }}
+                >
+                  {category}
+                </div>
+              </Link>
             </li>
           );
         })}
