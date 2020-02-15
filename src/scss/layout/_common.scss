@@ -1,8 +1,10 @@
 .main-layout {
   @extend %d-flex;
+  min-height: 100vh;
 
   .block-content {
     flex: 1;
+    position: relative;
   }
 }
 
@@ -213,14 +215,39 @@
   }
 }
 
-.category-loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  @extend %d-flex;
-  justify-content: center;
-  align-items: center;
-  background: $base-background-color;
+.jokes {
+  .button-block {
+    font-size: 1.5rem;
+    line-height: 1;
+    text-align: right;
+    padding-top: 25px;
+  }
+
+  button {
+    transition: color 0.2s linear;
+    &:hover {
+      color: $red;
+    }
+  }
+}
+
+.jokes-list {
+  @extend %list-reset;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+
+  .card {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.jokes-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

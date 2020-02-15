@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { setActiveCategory } from "../../../../store/action";
+
 class Sidebar extends Component {
   componentDidMount() {
-    const activeCategoryId = this.props.match.params.slug;
-    this.props.setActiveCategory(activeCategoryId);
+    const { setActiveCategory, match } = this.props;
+    const activeCategoryId = match.params.slug;
+    setActiveCategory(activeCategoryId);
   }
 
   componentDidUpdate(prevProps) {
-    const activeCategoryId = this.props.match.params.slug;
+    const { setActiveCategory, match } = this.props;
+    const activeCategoryId = match.params.slug;
     if (prevProps.match.params.slug !== activeCategoryId && activeCategoryId) {
-      this.props.setActiveCategory(activeCategoryId);
+      setActiveCategory(activeCategoryId);
     }
   }
 

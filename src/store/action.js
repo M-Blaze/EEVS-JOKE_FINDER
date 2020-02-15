@@ -1,4 +1,8 @@
-import { getCategoriesFromApi, getJokesFromQuery } from "../api/api";
+import {
+  getCategoriesFromApi,
+  getJokesFromQuery,
+  getJokeFromCategory
+} from "../api/api";
 
 export const getCategories = () => dispatch => {
   getCategoriesFromApi().then(response => {
@@ -24,5 +28,16 @@ export const setActiveCategory = categoryName => dispatch => {
   dispatch({
     type: "SET_ACTIVE_CATEGORY",
     payload: categoryName
+  });
+};
+
+export const fetchJoke = category => dispatch => {
+  return getJokeFromCategory(category).then(joke => {
+    if (joke.length !== 0) {
+      dispatch({
+        type: "SET_JOKES",
+        payload: [joke.data]
+      });
+    }
   });
 };

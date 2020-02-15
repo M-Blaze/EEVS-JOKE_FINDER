@@ -27,7 +27,7 @@ class MainLayout extends Component {
     return this.state.isFetchingCategories ? (
       <Loader
         type="MutatingDots"
-        className="category-loader"
+        className="loader"
         color="#ffa500"
         height={100}
         width={100}

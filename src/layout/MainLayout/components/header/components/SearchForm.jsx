@@ -29,7 +29,9 @@ function SearchForm({ searchJokes }) {
           />
         </div>
         <div className="button-group">
-          <i className="icon-search"></i>
+          <button type="submit">
+            <i className="icon-search"></i>
+          </button>
         </div>
       </form>
     </div>

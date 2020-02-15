@@ -7,6 +7,12 @@ const REDUCER = (state, action) => {
         categories: payload
       };
 
+    case "SET_JOKES":
+      return {
+        ...state,
+        jokes: payload
+      };
+
     case "SET_ACTIVE_CATEGORY":
       return {
         ...state,
