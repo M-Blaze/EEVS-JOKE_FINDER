@@ -6,6 +6,13 @@ const REDUCER = (state, action) => {
         ...state,
         categories: payload
       };
+
+    case "SET_ACTIVE_CATEGORY":
+      return {
+        ...state,
+        activeCategory: payload
+      };
+
     default:
       return state;
   }

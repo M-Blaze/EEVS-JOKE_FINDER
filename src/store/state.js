@@ -1,6 +1,7 @@
 const STATE = {
   categories: [],
-  jokes: []
+  jokes: [],
+  activeCategory: ""
 };
 
 export default STATE;

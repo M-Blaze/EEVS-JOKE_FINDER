@@ -19,3 +19,10 @@ export const searchJokes = query => dispatch => {
     }
   });
 };
+
+export const setActiveCategory = categoryName => dispatch => {
+  dispatch({
+    type: "SET_ACTIVE_CATEGORY",
+    payload: categoryName
+  });
+};

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { searchJokes } from "../../../store/action";
+import { searchJokes } from "../../../../../store/action";
 import { connect } from "react-redux";
 
 function SearchForm({ searchJokes }) {
