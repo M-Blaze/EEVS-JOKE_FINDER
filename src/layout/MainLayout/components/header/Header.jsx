@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "./components/Logo";
 import SearchForm from "./components/SearchForm";
+import BurgerMenu from "./components/BurgerMenu";
 
 function Header() {
   return (
@@ -9,6 +10,7 @@ function Header() {
         <div className="header-content">
           <Logo />
           <SearchForm />
+          <BurgerMenu />
         </div>
       </div>
     </div>

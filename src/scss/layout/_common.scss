@@ -11,8 +11,15 @@
 }
 
 .sidebar {
-  position: relative;
-  width: 220px;
+  @include media(">=tablet") {
+    width: 220px;
+  }
+}
+
+.nav-active {
+  .sidebar-menu-list {
+    transform: translateY(0);
+  }
 }
 
 .sidebar-menu-list {
@@ -20,15 +27,27 @@
   @extend %list-reset;
   font-size: 1.7rem;
   line-height: 1;
-  height: 100vh;
+  height: calc(100vh - 132px);
   overflow-x: visible;
   overflow-y: auto;
-  padding: 35px 0 20px;
   position: fixed;
-  top: 0;
+  padding: 0;
+  top: 132px;
   left: 0;
-  width: 220px;
+  right: 0;
   text-transform: capitalize;
+  z-index: 5;
+  transform: translateY(calc(-100% - 50px));
+  transition: transform 0.2s linear;
+
+  @include media(">=tablet") {
+    padding: 35px 0;
+    width: 220px;
+    top: 0;
+    right: auto;
+    height: 100vh;
+    transform: translateY(0);
+  }
 
   &:before {
     content: "";
@@ -103,23 +122,48 @@
 .category-block {
   .block-header {
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+
+    @include media(">=tablet") {
+      margin-bottom: 5rem;
+    }
   }
 }
 
 .categories-list {
   @extend %list-reset;
   @extend %d-flex;
-  font-size: 2rem;
-  margin: 0 -20px;
+  font-size: 1.6rem;
+  line-height: 1;
+  margin: 0 -10px;
+
+  @include media(">=lg-phone") {
+    font-size: 2rem;
+  }
+
+  @include media(">=tablet") {
+    margin: 0 -20px;
+  }
 
   .card {
-    width: 25%;
+    width: 50%;
     text-align: center;
     margin-bottom: 40px;
-    padding: 0 20px;
+    padding: 0 10px;
     position: relative;
     transition: transform 0.1s ease-in;
+
+    @include media(">=lg-phone") {
+      width: 33.33%;
+    }
+
+    @include media(">=tablet") {
+      padding: 0 20px;
+    }
+
+    @include media(">=desktop") {
+      width: 25%;
+    }
 
     a {
       text-decoration: none;
@@ -134,7 +178,7 @@
       content: "";
       position: absolute;
       bottom: -4px;
-      left: 16px;
+      left: 7px;
       width: 0;
       height: 0;
       border-style: solid;
@@ -142,6 +186,11 @@
       border-color: transparent transparent transparent $base-background-color;
       z-index: 10;
       transition: all 0.1s linear;
+
+      @include media(">=tablet") {
+        bottom: -4px;
+        left: 16px;
+      }
     }
 
     &:nth-child(2n) {
@@ -218,9 +267,17 @@
 }
 
 .jokes {
-  padding-bottom: 50px;
   width: 100%;
   flex: 1;
+  padding-bottom: 20px;
+
+  @include media(">=tablet") {
+    padding-bottom: 30px;
+  }
+
+  @include media(">=desktop") {
+    padding-bottom: 50px;
+  }
 
   .container {
     height: 100%;
@@ -238,11 +295,20 @@
   }
 
   .button-block {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1;
     text-align: right;
     position: relative;
-    padding-right: 20px;
+    padding-right: 10px;
+
+    @include media(">=tablet") {
+      font-size: 1.8rem;
+      padding-right: 20px;
+    }
+
+    @include media(">=desktop") {
+      font-size: 2rem;
+    }
 
     .icon-holder {
       position: absolute;
@@ -274,10 +340,24 @@
 
 .jokes-list {
   @extend %list-reset;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   line-height: 1.2;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+
+  @include media(">=lg-phone") {
+    font-size: 1.9rem;
+  }
+
+  @include media(">=tablet") {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+
+  @include media(">=desktop") {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
 
   .card {
     max-width: 600px;
@@ -287,7 +367,11 @@
     background: #ccc;
     margin-bottom: 20px;
     border-radius: 5px;
-    padding: 20px;
+    padding: 15px;
+
+    @include media(">=tablet") {
+      padding: 20px;
+    }
   }
 }
 

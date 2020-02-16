@@ -1,19 +1,57 @@
 #header {
   text-align: center;
   width: 100%;
+  transition: background 0.2s linear;
+  position: relative;
+  z-index: 11;
+  background: white;
 }
 
 .header-content {
   @extend %d-flex;
   justify-content: space-between;
   align-items: center;
-  padding: 35px 0;
+  padding: 10px 0;
+  position: relative;
+
+  @include media(">=tablet") {
+    position: static;
+    padding: 35px 0;
+  }
 }
 
 .nav-search-bar {
-  max-width: 300px;
-  width: 100%;
+  width: 95%;
   font-size: 1.5rem;
+  line-height: 1;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, calc(-100% - 20px));
+  z-index: -2;
+  // opacity: 0;
+  // visibility: hidden;
+  transition: opacity 0.2s linear, visibility 0.2s linear, transform 0.2s linear;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: -999px;
+    right: -999px;
+    top: 0;
+    bottom: -10px;
+    background: white;
+  }
+
+  @include media(">=tablet") {
+    max-width: 300px;
+    font-size: 1.9rem;
+    position: static;
+
+    &:before {
+      content: none;
+    }
+  }
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -38,7 +76,22 @@
 }
 
 .logo {
-  max-width: 120px;
+  width: 100px;
+
+  @include media(">=tablet") {
+    width: 120px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 11px;
+    left: -15px;
+    right: -15px;
+    background: white;
+    z-index: -1;
+  }
 }
 
 .search-form {
@@ -54,6 +107,72 @@
 
     &:hover {
       cursor: pointer;
+    }
+  }
+}
+
+.nav-active {
+  #header {
+    background: white;
+  }
+  .burger-menu {
+    .burger-span {
+      &:first-child,
+      &:last-child {
+        top: 8px;
+      }
+
+      &:first-child {
+        transform: rotateZ(45deg);
+      }
+
+      &:last-child {
+        transform: rotateZ(-45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+  .nav-search-bar {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.burger-menu {
+  position: relative;
+  z-index: 15;
+  @include size(22px, 30px);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .burger-span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: black;
+    border-radius: 2px;
+    transition: top 0.2s linear, opacity 0.2s linear, transform 0.2s linear,
+      visibility 0.2s linear;
+
+    &:first-child {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 8px;
+    }
+
+    &:last-child {
+      top: 16px;
     }
   }
 }
