@@ -56,6 +56,7 @@ h6 {
 
 input {
   width: 100%;
+  box-sizing: border-box !important;
 }
 
 img {
@@ -83,4 +84,70 @@ button {
   justify-content: center;
   align-items: center;
   background: $base-background-color;
+}
+
+.transition {
+  &-appear {
+    opacity: 0;
+    visibility: hidden;
+
+    &.transition-appear-active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.2s linear;
+    }
+  }
+
+  &-appear-done {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &-exit {
+    opacity: 1;
+    visibility: visible;
+
+    &.transition-exit-active {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s linear;
+    }
+  }
+
+  &-exit-done {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.pagination-list {
+  @extend %d-flex;
+  @extend %list-reset;
+  font-size: 1.8rem;
+  line-height: 1;
+  margin: 0 -5px;
+  justify-content: center;
+
+  li {
+    padding: 0 5px;
+    margin-bottom: 10px;
+  }
+
+  .pagination-content {
+    @include size(30px);
+    @extend %d-flex;
+    padding: 3px 3px 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(#ccc, 0.8);
+    transition: background 0.2s linear, color 0.2s linear;
+    user-select: none;
+
+    &:hover,
+    &.active {
+      background: $red;
+      color: white;
+      cursor: pointer;
+    }
+  }
 }

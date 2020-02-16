@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { searchJokes } from "../../../../../store/action";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-function SearchForm({ searchJokes }) {
+function SearchForm({ searchJokes, history }) {
   const [query, setQuery] = useState("");
 
   function submitHandler(e) {
     e.preventDefault();
     if (query) {
-      searchJokes(query.trim());
+      searchJokes(query.trim()).then(() => {
+        history.push("/jokes/random");
+      });
     }
   }
 
@@ -22,7 +25,7 @@ function SearchForm({ searchJokes }) {
       <form action="#" onSubmit={submitHandler} className="search-form">
         <div className="input-group">
           <input
-            type="text"
+            type="search"
             name="query"
             onChange={changeHandler}
             placeholder="Search for a joke..."
@@ -38,4 +41,4 @@ function SearchForm({ searchJokes }) {
   );
 }
 
-export default connect(null, { searchJokes })(SearchForm);
+export default withRouter(connect(null, { searchJokes })(SearchForm));

@@ -15,10 +15,15 @@ export const getCategories = () => dispatch => {
 
 export const searchJokes = query => dispatch => {
   return getJokesFromQuery(query).then(jokes => {
-    if (jokes.length !== 0) {
+    const resultJokes = jokes.data.result;
+    if (resultJokes.length !== 0) {
       dispatch({
         type: "SET_JOKES",
-        payload: jokes.data.result
+        payload: resultJokes
+      });
+      dispatch({
+        type: "SET_ACTIVE_CATEGORY",
+        payload: "Random"
       });
     }
   });
