@@ -6,12 +6,8 @@ import { CSSTransition } from "react-transition-group";
 
 class Sidebar extends Component {
   componentDidMount() {
-    const { setActiveCategory, match, categories, history } = this.props;
+    const { setActiveCategory, match } = this.props;
     const activeCategoryId = match.params.slug;
-    if (activeCategoryId === "random") {
-      history.push(`/jokes/${categories[0]}`);
-      return;
-    }
     setActiveCategory(activeCategoryId);
   }
 

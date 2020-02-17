@@ -12,6 +12,10 @@
 
 .sidebar {
   @include media(">=tablet") {
+    width: 200px;
+  }
+
+  @include media(">=desktop") {
     width: 220px;
   }
 }
@@ -29,12 +33,12 @@
   @extend %list-reset;
   font-size: 1.7rem;
   line-height: 1;
-  height: calc(100% - 132px);
+  height: calc(100% - 129px);
   overflow-x: visible;
   overflow-y: auto;
   position: absolute;
   padding: 0;
-  top: 132px;
+  top: 129px;
   left: 0;
   right: 0;
   text-transform: capitalize;
@@ -47,7 +51,7 @@
   @include media(">=tablet") {
     position: fixed;
     padding: 35px 0;
-    width: 220px;
+    width: 200px;
     top: 0;
     right: auto;
     height: 100vh;
@@ -56,14 +60,22 @@
     visibility: visible;
   }
 
+  @include media(">=desktop") {
+    width: 220px;
+  }
+
   &:before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    width: 10px;
     background: $orange;
+    width: 5px;
+
+    @include media(">=tablet") {
+      width: 10px;
+    }
   }
 
   li {
@@ -100,9 +112,13 @@
       top: 0;
       bottom: 0;
       left: 0;
-      width: 10px;
+      width: 5px;
       background: $red;
       transition: width 0.1s linear;
+
+      @include media(">=tablet") {
+        width: 10px;
+      }
     }
 
     &.active,
@@ -129,12 +145,25 @@
 .category-block {
   .block-header {
     text-align: center;
-    margin-bottom: 3rem;
-    padding-top: 25px;
+    margin-bottom: 2.7rem;
+    padding-top: 50px;
 
     @include media(">=tablet") {
       margin-bottom: 5rem;
-      padding-top: 0;
+      padding-top: 70px;
+    }
+
+    h2 {
+      font-size: 2.6rem;
+      line-height: 1;
+
+      @include media(">=tablet") {
+        font-size: 2.8rem;
+      }
+
+      @include media(">=desktop") {
+        font-size: 3rem;
+      }
     }
   }
 }
@@ -142,7 +171,7 @@
 .categories-list {
   @extend %list-reset;
   @extend %d-flex;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   line-height: 1;
   margin: 0 -10px;
 
@@ -157,7 +186,7 @@
   .card {
     width: 50%;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     padding: 0 10px;
     position: relative;
     transition: transform 0.1s ease-in;
@@ -270,7 +299,7 @@
       content: "";
       width: 100%;
       display: block;
-      padding-bottom: 50%;
+      padding-bottom: 35%;
     }
   }
 }
@@ -278,11 +307,7 @@
 .jokes {
   width: 100%;
   flex: 1;
-  padding-bottom: 40px;
-
-  @include media(">=desktop") {
-    padding-bottom: 50px;
-  }
+  padding-bottom: 80px;
 
   .container {
     height: 100%;
@@ -345,14 +370,10 @@
 
 .jokes-list {
   @extend %list-reset;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   line-height: 1.2;
   font-weight: 700;
   margin-bottom: 10px;
-
-  @include media(">=lg-phone") {
-    font-size: 1.9rem;
-  }
 
   @include media(">=tablet") {
     font-size: 2.2rem;
@@ -361,7 +382,6 @@
 
   @include media(">=desktop") {
     font-size: 2.5rem;
-    margin-bottom: 50px;
   }
 
   .card {
@@ -372,7 +392,7 @@
     background: #ccc;
     margin-bottom: 20px;
     border-radius: 5px;
-    padding: 15px;
+    padding: 25px;
 
     @include media(">=tablet") {
       padding: 20px;

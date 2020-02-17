@@ -29,18 +29,11 @@
   font-size: 1.5rem;
   line-height: 1;
   position: absolute;
-  top: 100%;
+  top: calc(100% - 1px);
   left: 50%;
   transform: translate(-50%, calc(-100% - 20px));
   z-index: -2;
-  // opacity: 0;
-  // visibility: hidden;
   transition: opacity 0.2s linear, visibility 0.2s linear, transform 0.2s linear;
-
-  @include media(">=tablet") {
-    transform: translate(0, 0);
-    z-index: 1;
-  }
 
   &:before {
     content: "";
@@ -53,13 +46,18 @@
   }
 
   @include media(">=tablet") {
+    transform: translate(0, 0);
+    z-index: 1;
     max-width: 300px;
-    font-size: 1.9rem;
     position: static;
 
     &:before {
       content: none;
     }
+  }
+
+  @include media(">=desktop") {
+    font-size: 1.6rem;
   }
 
   input:-webkit-autofill,
@@ -82,12 +80,28 @@
       background: rgb(241, 241, 241);
     }
   }
+
+  .info-block {
+    position: absolute;
+    color: $red;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @extend %d-flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .logo {
   width: 100px;
 
   @include media(">=tablet") {
+    width: 110px;
+  }
+
+  @include media(">=desktop") {
     width: 120px;
   }
 
@@ -110,6 +124,13 @@
 .search-form {
   position: relative;
 
+  .search-loader {
+    position: absolute;
+    top: calc(50% - -1px);
+    right: 20px;
+    transform: translateY(-50%);
+  }
+
   .button-group {
     position: absolute;
     top: calc(50% + 1px);
@@ -122,11 +143,18 @@
       cursor: pointer;
     }
   }
+
+  .input-error {
+    &::placeholder {
+      color: $red;
+    }
+  }
 }
 
 .nav-active {
   .burger-menu {
-    height: 26px;
+    height: 22px;
+
     .burger-span {
       &:first-child,
       &:last-child {
@@ -164,7 +192,7 @@
 .burger-menu {
   position: relative;
   z-index: 15;
-  @include size(21px, 30px);
+  @include size(21px, 25px);
   transition: height 0.2s linear;
 
   @include media(">=tablet") {
@@ -179,7 +207,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background: black;
     border-radius: 2px;
     transition: top 0.2s linear, opacity 0.2s linear, transform 0.2s linear,

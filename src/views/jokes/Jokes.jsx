@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
-import { fetchJoke } from "../../store/action";
+import { fetchJoke, setActiveCategory } from "../../store/action";
 import { CSSTransition } from "react-transition-group";
 import Pagination from "./components/pagination";
 
@@ -15,12 +15,16 @@ class Jokes extends Component {
   };
 
   componentDidMount() {
-    const { activeCategory, jokes, match, fetchJoke } = this.props;
-    if (
-      jokes.length !== 0 &&
-      activeCategory === match.params.slug &&
-      match.params.slug !== "random"
-    ) {
+    const {
+      jokes,
+      match,
+      fetchJoke,
+      setActiveCategory,
+      categories,
+      history
+    } = this.props;
+
+    if (jokes.length !== 0 && match.params.slug === "random") {
       this.setState({
         jokes,
         currentJokes: jokes.slice(0, this.state.numberOfJokesPerPage)
@@ -28,11 +32,15 @@ class Jokes extends Component {
       this.setIsFetchingJokes(false);
       return;
     }
-    if (match.params.slug !== "random") {
-      fetchJoke(match.params.slug).then(() => {
+
+    fetchJoke(match.params.slug)
+      .then(() => {
         this.setIsFetchingJokes(false);
+      })
+      .catch(() => {
+        setActiveCategory(categories[0]);
+        history.push(`/jokes/${categories[0]}`);
       });
-    }
   }
 
   componentDidUpdate(prevProps) {
@@ -49,7 +57,8 @@ class Jokes extends Component {
     if (jokes && jokes !== prevProps.jokes) {
       this.setState({
         jokes,
-        currentJokes: jokes.slice(0, this.state.numberOfJokesPerPage)
+        currentJokes: jokes.slice(0, this.state.numberOfJokesPerPage),
+        pageIndex: 1
       });
     }
   }
@@ -141,11 +150,14 @@ class Jokes extends Component {
 }
 
 const mapStateToProps = state => {
-  const { jokes, activeCategory } = state;
+  const { jokes, activeCategory, categories } = state;
   return {
     jokes,
-    activeCategory
+    activeCategory,
+    categories
   };
 };
 
-export default connect(mapStateToProps, { fetchJoke })(Jokes);
+export default connect(mapStateToProps, { fetchJoke, setActiveCategory })(
+  Jokes
+);

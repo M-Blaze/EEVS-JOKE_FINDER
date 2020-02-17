@@ -10,7 +10,7 @@ class Router extends Component {
       <BrowserRouter>
         <MainLayout>
           <Switch>
-            <Route path="/jokes/:slug" component={Jokes} />
+            <Route path="/jokes/:slug" exact component={Jokes} />
             <Route path="/" exact component={Categories} />
             <Route render={() => <Redirect to="/" />} />
           </Switch>

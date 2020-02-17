@@ -32,7 +32,14 @@ export default function BurgerMenu() {
       }
     }
 
-    toggleBurgerMenu();
+    hideBurgerMenu();
+  }
+
+  function hideBurgerMenu() {
+    const activeClass = "nav-active";
+    const body = document.body;
+    body.removeEventListener("click", hideOnClickOutside);
+    body.classList.remove(activeClass);
   }
 
   return (

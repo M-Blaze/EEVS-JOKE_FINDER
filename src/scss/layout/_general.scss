@@ -1,5 +1,4 @@
 #wrapper {
-  min-width: 320px;
   position: relative;
   overflow: hidden;
 }
@@ -133,22 +132,30 @@ button {
     padding: 0 5px;
     margin-bottom: 10px;
   }
+}
+.pagination-content {
+  height: 30px;
+  min-width: 30px;
+  @extend %d-flex;
+  padding: 3px 3px 0;
+  justify-content: center;
+  align-items: center;
+  background: rgba(#ccc, 0.8);
+  transition: background 0.2s linear, color 0.2s linear;
+  user-select: none;
+  position: relative;
 
-  .pagination-content {
-    @include size(30px);
-    @extend %d-flex;
-    padding: 3px 3px 0;
-    justify-content: center;
-    align-items: center;
-    background: rgba(#ccc, 0.8);
-    transition: background 0.2s linear, color 0.2s linear;
-    user-select: none;
+  &:hover,
+  &.active {
+    background: $red;
+    color: white;
+    cursor: pointer;
+  }
 
-    &:hover,
-    &.active {
-      background: $red;
-      color: white;
-      cursor: pointer;
-    }
+  .icon-holder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }

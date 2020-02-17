@@ -25,7 +25,11 @@ export const searchJokes = query => dispatch => {
         type: "SET_ACTIVE_CATEGORY",
         payload: "Random"
       });
+      return;
     }
+
+    const error = new Error("not found");
+    throw error;
   });
 };
 
