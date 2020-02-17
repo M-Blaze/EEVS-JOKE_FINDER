@@ -5,7 +5,7 @@ import BurgerMenu from "./components/BurgerMenu";
 
 function Header() {
   return (
-    <div id="header">
+    <div id="header" className="header">
       <div className="container">
         <div className="header-content">
           <Logo />

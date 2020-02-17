@@ -5,6 +5,10 @@
   position: relative;
   z-index: 11;
   background: white;
+
+  @include media(">=tablet") {
+    background: transparent;
+  }
 }
 
 .header-content {
@@ -32,6 +36,11 @@
   // opacity: 0;
   // visibility: hidden;
   transition: opacity 0.2s linear, visibility 0.2s linear, transform 0.2s linear;
+
+  @include media(">=tablet") {
+    transform: translate(0, 0);
+    z-index: 1;
+  }
 
   &:before {
     content: "";
@@ -86,11 +95,15 @@
     content: "";
     position: absolute;
     top: 0;
-    bottom: 11px;
-    left: -15px;
-    right: -15px;
+    bottom: 0;
+    left: -20px;
+    right: -20px;
     background: white;
     z-index: -1;
+
+    @include media(">=tablet") {
+      content: none;
+    }
   }
 }
 
@@ -112,22 +125,20 @@
 }
 
 .nav-active {
-  #header {
-    background: white;
-  }
   .burger-menu {
+    height: 26px;
     .burger-span {
       &:first-child,
       &:last-child {
-        top: 8px;
+        top: 50%;
       }
 
       &:first-child {
-        transform: rotateZ(45deg);
+        transform: translateY(-50%) rotateZ(45deg);
       }
 
       &:last-child {
-        transform: rotateZ(-45deg);
+        transform: translateY(-50%) rotateZ(-45deg);
       }
 
       &:nth-child(2) {
@@ -142,12 +153,23 @@
     opacity: 1;
     visibility: visible;
   }
+
+  .logo {
+    &:before {
+      bottom: 11px;
+    }
+  }
 }
 
 .burger-menu {
   position: relative;
   z-index: 15;
-  @include size(22px, 30px);
+  @include size(21px, 30px);
+  transition: height 0.2s linear;
+
+  @include media(">=tablet") {
+    display: none;
+  }
 
   &:hover {
     cursor: pointer;
