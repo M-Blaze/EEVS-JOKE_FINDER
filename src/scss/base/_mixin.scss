@@ -12,3 +12,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}

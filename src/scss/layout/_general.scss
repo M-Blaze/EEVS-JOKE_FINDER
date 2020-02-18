@@ -133,6 +133,7 @@ button {
     margin-bottom: 10px;
   }
 }
+
 .pagination-content {
   height: 30px;
   min-width: 30px;
@@ -141,15 +142,29 @@ button {
   justify-content: center;
   align-items: center;
   background: rgba(#ccc, 0.8);
-  transition: background 0.2s linear, color 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border 0.2s linear;
   user-select: none;
   position: relative;
+  border: 1px solid transparent;
 
-  &:hover,
   &.active {
     background: $red;
     color: white;
     cursor: pointer;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: $red;
+  }
+
+  @include media(">=desktop") {
+    &:hover {
+      background: $red;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
   }
 
   .icon-holder {

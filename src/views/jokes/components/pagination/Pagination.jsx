@@ -37,7 +37,6 @@ function Pagination({
 
   if (totalNumberOfJokes > numberOfJokesPerPage) {
     const paginationItems = [];
-
     let loopEnd;
     const loopStart =
       paginationPosition === 1
@@ -114,7 +113,9 @@ function Pagination({
 
     return (
       <div className="pagination">
-        <ul className="pagination-list">{paginationItems}</ul>
+        <ul data-testId="pagination-list" className="pagination-list">
+          {paginationItems}
+        </ul>
       </div>
     );
   }

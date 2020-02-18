@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { searchJokes } from "../../../../../store/action";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -8,6 +8,7 @@ function SearchForm({ searchJokes, history }) {
   const [query, setQuery] = useState("");
   const [error, setError] = useState(false);
   const [isSearchingJokes, setIsSearchingJokes] = useState(false);
+  const queryRef = useRef(null);
 
   function submitHandler(e) {
     e.preventDefault();
@@ -19,6 +20,7 @@ function SearchForm({ searchJokes, history }) {
           setQuery("");
           setIsSearchingJokes(false);
           document.body.classList.remove("nav-active");
+          queryRef.current.blur();
         })
         .catch(() => {
           setError(true);
@@ -46,6 +48,7 @@ function SearchForm({ searchJokes, history }) {
           <input
             type="search"
             name="query"
+            ref={queryRef}
             onChange={changeHandler}
             placeholder={error ? "No jokes found..." : "Search for a joke..."}
             value={query}
